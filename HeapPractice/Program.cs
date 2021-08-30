@@ -3,16 +3,28 @@ using System.Collections.Generic;
 
 namespace HeapPractice
 {
+    class MaxHeap
+    {
+        public List<int> heap;
+
+        public MaxHeap()
+        {
+            heap = new List<int>();
+        }
+
+        public MaxHeap(List<int> list)
+        {
+            heap = list;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            List<int> heap = CreateList(10, 6, 5, 4, 3, 2, 1, -1, 1, 3, -12, 20);
-            printHeap(heap);
-        }
-        static List<T> CreateList<T>(params T[] values)
-        {
-            return new List<T>(values);
+            List<int> list = new List<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            MaxHeap test = new MaxHeap(new List<int>(list));
+            printHeap(test.heap);
         }
 
         static void printHeap(List<int> heap)   //assumes no more than 2 digits per num
