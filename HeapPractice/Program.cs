@@ -7,7 +7,7 @@ namespace HeapPractice
     {
         static void Main(string[] args)
         {
-            List<int> heap = CreateList(10, 6, 5, 4, 3, 2, 1, 1, 1, 3, 12, 20);
+            List<int> heap = CreateList(10, 6, 5, 4, 3, 2, 1, -1, 1, 3, -12, 20);
             printHeap(heap);
         }
         static List<T> CreateList<T>(params T[] values)
@@ -34,10 +34,10 @@ namespace HeapPractice
                         int num = heap[index];
                         if (num >= 0 && num < 10)
                             Console.Write(" " + num);
-                        else if (num >= 10 && num < 100)
+                        else if ((num >= 10 && num < 100)|| (num > -10 && num < 0))
                             Console.Write(num);
                         else
-                            Console.Write("__");
+                            Console.Write("__");    //indicates number cannot be printed
                         
                         for (int k = 0; k < Math.Pow(2, height - i + 1) - 1; k++)
                             Console.Write("  ");
