@@ -16,15 +16,43 @@ namespace HeapPractice
         {
             heap = list;
         }
+
+        public void Insert(int entry)
+        {
+            int currentIndex = heap.Count;
+            heap.Add(entry);
+            while (entry > heap[(currentIndex - 1) / 2] && currentIndex != 0)
+            {
+                swap(currentIndex, (currentIndex - 1) / 2);
+                currentIndex = (currentIndex - 1) / 2;
+            }
+                
+
+        }
+
+        private void swap(int index1, int index2)
+        {
+            int temp = heap[index1];
+            heap[index1] = heap[index2];
+            heap[index2] = temp;
+        }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-            MaxHeap test = new MaxHeap(new List<int>(list));
-            printHeap(test.heap);
+            //List<int> list = new List<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            //MaxHeap test = new MaxHeap(new List<int>(list));
+            MaxHeap test = new MaxHeap();
+            Random r = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                int entry = r.Next(0, 99);
+                Console.WriteLine(entry);
+                test.Insert(entry);
+                printHeap(test.heap);
+            }
         }
 
         static void printHeap(List<int> heap)   //assumes no more than 2 digits per num
